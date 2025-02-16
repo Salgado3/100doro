@@ -6,7 +6,7 @@ TODO add gifs
 
 ## How It's Made:
 
-**Tech used:** Typescript, React, [Mantine](https://mantine.dev/getting-started/), [Appwrite](https://appwrite.io/)
+**Tech used:** [Typescript](https://www.typescriptlang.org/), [React](https://react.dev/), [Mantine](https://mantine.dev/getting-started/), [Appwrite](https://appwrite.io/)
 
 ## Future Features
 
