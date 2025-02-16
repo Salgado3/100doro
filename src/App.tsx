@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Navbar } from "./components/Navbar";
+
 import "./App.css";
 
 function App() {
@@ -58,8 +60,9 @@ function App() {
   }, [isRunning, currentTime, isWorkTime]);
 
   return (
-    <div className="App">
-      <h1>Pomodoro Timer</h1>
+    <div className="container">
+      <Navbar />
+      <h1>100doro</h1>
       <div className="timer-display">
         <h2>{isWorkTime ? "Work Time" : "Break Time"}</h2>
         <div className="timer">{formatTime(currentTime)}</div>
