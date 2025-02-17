@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
-import { Navbar } from "./components/Navbar";
+import { useState, useEffect } from 'react';
+import { Navbar } from './components/Navbar';
+import { Auth } from './components/Auth';
 
-import "./App.css";
+import './App.css';
 
 function App() {
   const [isWorkTime, setIsWorkTime] = useState(true);
@@ -15,8 +16,8 @@ function App() {
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    return `${minutes < 10 ? "0" + minutes : minutes}:${
-      remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds
+    return `${minutes < 10 ? '0' + minutes : minutes}:${
+      remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds
     }`;
   };
 
@@ -60,27 +61,28 @@ function App() {
   }, [isRunning, currentTime, isWorkTime]);
 
   return (
-    <div className="container">
+    <div className='container'>
       <Navbar />
       <h1>100doro</h1>
-      <div className="timer-display">
-        <h2>{isWorkTime ? "Work Time" : "Break Time"}</h2>
-        <div className="timer">{formatTime(currentTime)}</div>
+      <div className='timer-display'>
+        <h2>{isWorkTime ? 'Work Time' : 'Break Time'}</h2>
+        <div className='timer'>{formatTime(currentTime)}</div>
       </div>
-      <div className="buttons">
+      <div className='buttons'>
         {isRunning ? (
-          <button onClick={stopTimer} className="button stop">
+          <button onClick={stopTimer} className='button stop'>
             Stop
           </button>
         ) : (
-          <button onClick={startTimer} className="button start">
+          <button onClick={startTimer} className='button start'>
             Start
           </button>
         )}
-        <button onClick={switchSession} className="button switch">
-          {isWorkTime ? "Start Break" : "Back to Work"}
+        <button onClick={switchSession} className='button switch'>
+          {isWorkTime ? 'Start Break' : 'Back to Work'}
         </button>
       </div>
+      <Auth />
     </div>
   );
 }
