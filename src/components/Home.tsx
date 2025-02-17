@@ -4,13 +4,19 @@ import { ProgressBar } from "./ProgressBar";
 
 import styles from "./home.module.css";
 
-export const Home = () => {
+export const Home = ({
+  focusTime,
+  breakTime,
+}: {
+  focusTime: number;
+  breakTime: number;
+}) => {
   const [percentage, setPercentage] = useState(0); // To store the percentage for the progress bar
   const [isWorkTime, setIsWorkTime] = useState(true);
-  const [currentTime, setCurrentTime] = useState(25 * 60); // Initially 25 minutes for work
+  const [currentTime, setCurrentTime] = useState(focusTime * 60); // Initially 25 minutes for work
   const [isRunning, setIsRunning] = useState(false);
-  const workDuration = 25 * 60; // 25 minutes in seconds TODO update
-  const breakDuration = 0.25 * 60; // 5 minutes in seconds TODO update
+  const workDuration = focusTime * 60; // 25 minutes in seconds TODO update
+  const breakDuration = breakTime * 60; // 5 minutes in seconds TODO update
 
   // Effect to handle countdown
   useEffect(() => {
@@ -69,8 +75,8 @@ export const Home = () => {
   };
   return (
     <>
-      <div className="timer-display">
-        <h2>{isWorkTime ? "Focus Time" : "Break Time"}</h2>
+      <div className={styles.container}>
+        <h1>{isWorkTime ? "Focus Time" : "Break Time"}</h1>
         <ProgressBar
           timer={percentage.toFixed(0)}
           label={`${percentage.toFixed(0)}%`}

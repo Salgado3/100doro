@@ -1,3 +1,9 @@
+.table {
+  width: fit-content;
+  margin: auto;
+  margin-top: 10em;
+}
+
 .tableHeader {
   text-align: center;
 }
