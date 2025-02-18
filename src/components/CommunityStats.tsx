@@ -24,7 +24,7 @@ export const CommunityStats = () => {
     </Table.Tr>
   ));
   return (
-    <Table>
+    <Table className={styles.table}>
       <Table.Thead>
         <Table.Tr>
           <Table.Th className={styles.tableHeader}> Rank</Table.Th>
