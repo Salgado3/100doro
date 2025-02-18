@@ -7,15 +7,16 @@ With 100Doro, you’ll never walk alone, just like the fans at Anfield Stadium. 
 
 ![100doro](https://github.com/user-attachments/assets/ed8fd2cd-b2fb-4ca9-ab0f-03e17069eeed)
 
+
 ## How It's Made:
 
 **Tech used:** [Typescript](https://www.typescriptlang.org/), [React](https://react.dev/), [Mantine](https://mantine.dev/getting-started/), [Appwrite](https://appwrite.io/)
 
 ## Future Features
 
--Study Catagories (allows users to set their weekly goals and challenge themselves alongside the community (think codewar katas)) 
--Users earn points by completing pomodoros & to earn badges/flair
--More Charts! Display longterm data of pomos (total hours studied, streaks, etc)
--Add Sounds, loading screen, and error pages
--Active users stats, community minutes studied (combine all minutes from all the users), see whose's actively online and link to discord ("Jim is currently on class 3")
+- Study Catagories (allows users to set their weekly goals and challenge themselves alongside the community (think codewar katas)) 
+- Users earn points by completing pomodoros & to earn badges/flair
+- More Charts! Display longterm data of pomos (total hours studied, streaks, etc)
+- Add Sounds, loading screen, and error pages
+- Active users stats, community minutes studied (combine all minutes from all the users), see whose's actively online and link to discord ("Jim is currently on class 3")
 
