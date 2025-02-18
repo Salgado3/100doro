@@ -11,6 +11,13 @@
   margin: 0;
 }
 
+.container {
+  margin-top: 8em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .timer {
   font-size: 5em;
   font-weight: 800;

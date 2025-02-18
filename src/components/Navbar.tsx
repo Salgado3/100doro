@@ -22,18 +22,16 @@ export const Navbar = ({ setActiveComponent }: any) => {
     e: MouseEvent<HTMLAnchorElement, globalThis.MouseEvent>,
     index: SetStateAction<number>
   ) => {
-    console.log("jaimes e.target", e, e.target);
     setActive(index);
+    //@ts-ignore
     setActiveComponent(e.target?.textContent as string);
   };
 
   const items = data.map((item, index) => (
     <NavLink
-      href="#required-for-focus"
       key={item.label}
       active={index === active}
       label={item.label}
-      description={item?.description || ""}
       rightSection={item.rightSection}
       leftSection={<item.icon size={16} stroke={1.5} />}
       onClick={(e) => handleClick(e, index)}

@@ -11,6 +11,9 @@
   margin: 0;
 }
 
+.mainContainer {
+  display: inline-block;
+}
 .timer {
   font-size: 5em;
   font-weight: 800;
