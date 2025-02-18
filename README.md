@@ -1,50 +1,33 @@
-# React + TypeScript + Vite
+# 100Doro (A Pomodoro for the 100Devs community)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Pomodoros can often feel like a solitary endeavor. We watch the slow tick of the
+timer, striving to stay focused and steadfast in our studies, just like St.
+Barbara taught us. But what if there was a better way? What if we leaned on our
+community to help us through the tough moments—the "trough of sorrow"—when
+motivation wanes?
 
-Currently, two official plugins are available:
+With 100Doro, you’ll never walk alone, just like the fans at Anfield Stadium.
+100Doro connects you with a supportive community, cheering you on as you tackle
+each Pomodoro. You’re not just studying alone; you’ve got a team behind you,
+pushing you forward! **Link to project:**
+[100doro - LIVE](https://salgado3.github.io/100doro/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![100doro](https://github.com/user-attachments/assets/ed8fd2cd-b2fb-4ca9-ab0f-03e17069eeed)
 
-## Expanding the ESLint configuration
+## How It's Made:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**Tech used:** [Typescript](https://www.typescriptlang.org/),
+[React](https://react.dev/), [Mantine](https://mantine.dev/getting-started/),
+[Appwrite](https://appwrite.io/)
 
-- Configure the top-level `parserOptions` property like this:
+## Future Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Study Catagories (allows users to set their weekly goals and challenge
+  themselves alongside the community (think codewar katas))
+- Users earn points by completing pomodoros & to earn badges/flair
+- More Charts! Display longterm data of pomos (total hours studied, streaks,
+  etc)
+- Add Sounds, loading screen, and error pages
+- Active users stats, community minutes studied (combine all minutes from all
+  the users), see whose's actively online and link to discord ("Jim is currently
+  on class 3")

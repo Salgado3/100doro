@@ -1,89 +1,89 @@
-import { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { Auth } from './components/Auth';
+import { useState, useEffect } from "react";
+import { Navbar } from "./components/Navbar";
+import { MantineProvider, Title } from "@mantine/core";
+import { AppShell, Burger } from "@mantine/core";
+import { Skeleton } from "@mantine/core";
+import { useDisclosure, useHeadroom, useMediaQuery } from "@mantine/hooks";
+import { Home } from "./components/Home";
+import { Settings } from "./components/Settings";
+import { CommunityStats } from "./components/CommunityStats";
 
-import './App.css';
+import "./App.css";
+import "@mantine/core/styles.css";
 
 function App() {
-  const [isWorkTime, setIsWorkTime] = useState(true);
-  const [currentTime, setCurrentTime] = useState(25 * 60); // 25 minutes
-  const [isRunning, setIsRunning] = useState(false);
+  const pinned = useHeadroom({ fixedAt: 40 });
+  const isMobile = useMediaQuery("(max-width: 767px)");
+  const [opened, { toggle }] = useDisclosure();
+  const [activeComponent, setActiveComponent] = useState("home"); // default component to show
+  const [loading, setLoading] = useState(true);
+  const [submittedValues, setSubmittedValues] = useState<{
+    focusTime: number;
+    breakTime: number;
+  } | null>(null);
 
-  const workDuration = 25 * 60; // 25 minutes in seconds
-  const breakDuration = 5 * 60; // 5 minutes in seconds
-
-  // Format time as MM:SS
-  const formatTime = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes < 10 ? '0' + minutes : minutes}:${
-      remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds
-    }`;
-  };
-
-  // Start the timer
-  const startTimer = () => {
-    setIsRunning(true);
-  };
-
-  // Stop the timer
-  const stopTimer = () => {
-    setIsRunning(false);
-  };
-
-  // Switch between work and break
-  const switchSession = () => {
-    if (isWorkTime) {
-      setCurrentTime(breakDuration);
-    } else {
-      setCurrentTime(workDuration);
-    }
-    setIsWorkTime(!isWorkTime);
-  };
-
-  // Effect to handle countdown
+  // Fetch the settings from localStorage when the component mounts
   useEffect(() => {
-    let timer;
+    const userSettings = window.localStorage.getItem("timeValues");
 
-    if (isRunning && currentTime > 0) {
-      timer = setInterval(() => {
-        setCurrentTime((prevTime) => prevTime - 1);
-      }, 1000);
-    } else if (currentTime === 0) {
-      clearInterval(timer);
-      switchSession();
-      alert(
-        isWorkTime ? "Time's up! Take a break!" : "Break's over! Back to work!"
-      );
+    if (userSettings) {
+      setSubmittedValues(JSON.parse(userSettings)); // Parse and set the values
     }
+    setLoading(false); // Data is loaded, stop loading
+  }, []);
 
-    return () => clearInterval(timer); // Cleanup on unmount or when timer stops
-  }, [isRunning, currentTime, isWorkTime]);
+  useEffect(() => {
+    if (isMobile) {
+      toggle();
+    }
+  }, [activeComponent]);
+  
+  if (loading) {
+    return (
+      <MantineProvider defaultColorScheme="dark">
+        <Skeleton height={8} radius="xl" />
+        <Skeleton height={8} mt={6} radius="xl" />
+        <Skeleton height={8} mt={6} width="70%" radius="xl" />
+      </MantineProvider>
+    );
+  }
 
   return (
-    <div className='container'>
-      <Navbar />
-      <h1>100doro</h1>
-      <div className='timer-display'>
-        <h2>{isWorkTime ? 'Work Time' : 'Break Time'}</h2>
-        <div className='timer'>{formatTime(currentTime)}</div>
-      </div>
-      <div className='buttons'>
-        {isRunning ? (
-          <button onClick={stopTimer} className='button stop'>
-            Stop
-          </button>
-        ) : (
-          <button onClick={startTimer} className='button start'>
-            Start
-          </button>
-        )}
-        <button onClick={switchSession} className='button switch'>
-          {isWorkTime ? 'Start Break' : 'Back to Work'}
-        </button>
-      </div>
-      <Auth />
-    </div>
+    <MantineProvider defaultColorScheme="dark">
+      <AppShell
+        header={{ height: 120, collapsed: !pinned, offset: false }}
+        navbar={{
+          width: 300,
+          breakpoint: "sm",
+          collapsed: { mobile: !opened },
+        }}
+        padding="xxs"
+      >
+        <AppShell.Navbar p="md" withBorder={false}>
+          <Navbar setActiveComponent={setActiveComponent} />
+        </AppShell.Navbar>
+        <AppShell.Header>
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Title className="header">100doro</Title>
+        </AppShell.Header>
+        <AppShell.Main className="mainContainer">
+          {activeComponent === "home" && (
+            <Home
+              focusTime={submittedValues?.focusTime || 25}
+              breakTime={submittedValues?.breakTime || 10}
+            />
+          )}
+          {activeComponent === "Community stats" && <CommunityStats />}
+          {activeComponent === "settings" && (
+            <Settings
+              focusTime={submittedValues?.focusTime || 25}
+              breakTime={submittedValues?.breakTime || 10}
+              setSubmittedValues={setSubmittedValues}
+            />
+          )}
+        </AppShell.Main>
+      </AppShell>
+    </MantineProvider>
   );
 }
 

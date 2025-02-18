@@ -1,0 +1,27 @@
+{
+  "projectId": "67b2374b000c9d6d9e6b",
+  "functions": [
+    {
+      "$id": "67b3b214002bc8fcc86e",
+      "execute": ["any"],
+      "name": "create-user",
+      "enabled": true,
+      "logging": true,
+      "runtime": "node-22",
+      "scopes": [
+        "users.read",
+        "databases.read",
+        "collections.read",
+        "documents.read",
+        "documents.write"
+      ],
+      "events": ["users.*.create"],
+      "schedule": "",
+      "timeout": 15,
+      "entrypoint": "src/main.js",
+      "commands": "npm install",
+      "specification": "s-1vcpu-512mb",
+      "path": "functions/create-user"
+    }
+  ]
+}

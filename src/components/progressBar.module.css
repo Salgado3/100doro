@@ -1,0 +1,11 @@
+.container {
+  width: auto;
+  height: 5em;
+}
+
+@media (max-width: 450px) {
+  .container {
+    width: auto;
+    height: 2em;
+  }
+}
