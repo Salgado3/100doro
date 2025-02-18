@@ -1,4 +1,4 @@
-import { ActionIcon, RingProgress, Text, Center } from "@mantine/core";
+import { ActionIcon, RingProgress, Text } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { IconCheck } from "@tabler/icons-react";
 

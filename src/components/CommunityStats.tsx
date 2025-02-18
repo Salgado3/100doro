@@ -1,6 +1,7 @@
 import { Table } from "@mantine/core";
 
 import styles from "./communityStats.module.css";
+import UserChart from "./UserChart";
 
 const mockData = [
   { rank: 1, name: "John Doe", score: 98 },
@@ -24,15 +25,18 @@ export const CommunityStats = () => {
     </Table.Tr>
   ));
   return (
-    <Table className={styles.table}>
-      <Table.Thead>
-        <Table.Tr>
-          <Table.Th className={styles.tableHeader}> Rank</Table.Th>
-          <Table.Th className={styles.tableHeader}>UserName</Table.Th>
-          <Table.Th className={styles.tableHeader}>Points</Table.Th>
-        </Table.Tr>
-      </Table.Thead>
-      <Table.Tbody>{rows}</Table.Tbody>
-    </Table>
+    <>
+      <Table className={styles.table}>
+        <Table.Thead>
+          <Table.Tr>
+            <Table.Th className={styles.tableHeader}> Rank</Table.Th>
+            <Table.Th className={styles.tableHeader}>UserName</Table.Th>
+            <Table.Th className={styles.tableHeader}>Points</Table.Th>
+          </Table.Tr>
+        </Table.Thead>
+        <Table.Tbody>{rows}</Table.Tbody>
+      </Table>
+      <UserChart />
+    </>
   );
 };
